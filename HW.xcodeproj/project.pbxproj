@@ -162,6 +162,7 @@
 				D0BB96B41FC5142200948C9C /* Frameworks */,
 				D0BB96B51FC5142200948C9C /* Resources */,
 				D0BB96EB1FC5383600948C9C /* Embed Frameworks */,
+				F8DC8E591FC68CA100D2C08F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -183,7 +184,7 @@
 				TargetAttributes = {
 					D0BB96B61FC5142200948C9C = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -217,6 +218,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F8DC8E591FC68CA100D2C08F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/HW/3rd/MBProgressHUD.framework",
+				"$(PROJECT_DIR)/HW/3rd/SDWebImage.framework",
+				"$(PROJECT_DIR)/HW/3rd/AFNetworking.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0BB96B31FC5142200948C9C /* Sources */ = {
@@ -283,7 +303,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -338,7 +358,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -363,7 +383,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7R29BPF93H;
 				FRAMEWORK_SEARCH_PATHS = (
 					../3rd/,
 					"$(PROJECT_DIR)/HW/3rd",
@@ -374,6 +396,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ted005.HW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b88af462-a2c3-4c07-ac9d-4ef0f8df98f8";
+				PROVISIONING_PROFILE_SPECIFIER = HW_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -383,7 +407,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7R29BPF93H;
 				FRAMEWORK_SEARCH_PATHS = (
 					../3rd/,
 					"$(PROJECT_DIR)/HW/3rd",
@@ -394,6 +420,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ted005.HW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b88af462-a2c3-4c07-ac9d-4ef0f8df98f8";
+				PROVISIONING_PROFILE_SPECIFIER = HW_profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
