@@ -66,7 +66,7 @@ const static NSInteger NODE_AVATAR_TAG = 2000;
     _belongToBtn.backgroundColor = [UIColor blackColor];//CTColorHex(0xefefef);CTColorHex(0x26AAF2)
     _belongToBtn.layer.cornerRadius = HWR(6);
     _belongToBtn.layer.masksToBounds = YES;
-    _belongToBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    _belongToBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     _belongToBtn.frame = CGRectMake(0, leftMargin, 0, HWR(15));
     [_belongToBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_belongToBtn addTarget:self action:@selector(goToNode:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,7 +76,7 @@ const static NSInteger NODE_AVATAR_TAG = 2000;
     _content.textAlignment = NSTextAlignmentLeft;
     _content.numberOfLines = 0;
     _content.lineBreakMode = NSLineBreakByWordWrapping;
-    _content.font = [UIFont systemFontOfSize:18];
+    _content.font = [UIFont systemFontOfSize:17];
     [self.contentView addSubview:_content];
     
     
