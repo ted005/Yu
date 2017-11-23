@@ -82,6 +82,7 @@
 			children = (
 				D0BB96B91FC5142200948C9C /* HW */,
 				D0BB96B81FC5142200948C9C /* Products */,
+				D0BB96C81FC5142200948C9C /* LaunchScreen.storyboard */,
 				D0BB96F21FC53EE200948C9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -108,7 +109,6 @@
 				D0BB96C11FC5142200948C9C /* SecondViewController.m */,
 				D0BB96C31FC5142200948C9C /* Main.storyboard */,
 				D0BB96C61FC5142200948C9C /* Assets.xcassets */,
-				D0BB96C81FC5142200948C9C /* LaunchScreen.storyboard */,
 				D0BB96CB1FC5142200948C9C /* Info.plist */,
 				D0BB96CC1FC5142200948C9C /* main.m */,
 				D0BB96DD1FC51DDF00948C9C /* HWDefine.h */,

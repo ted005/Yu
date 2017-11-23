@@ -101,20 +101,21 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.securityPolicy.validatesDomainName = NO;
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [manager GET:@"https://www.v2ex.com/api/topics/hot.json"
       parameters:nil
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              [weakSelf pushDataToDataSourceArr:(NSArray *)responseObject];
-//             dispatch_async(dispatch_get_main_queue(), ^{
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+             dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf.tableView reloadData];
-//             });
-             
+                 [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+             });
          }
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              weakSelf.dataSourceArr = nil;
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+             });
          }];
 }
 
@@ -139,7 +140,9 @@
 
 - (void)refresh {
     _dataSourceArr = [[NSMutableArray alloc] init];
-    [self sendService];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(sendService) withObject:nil afterDelay:0.3];
+//    [self sendService];
 }
 
 - (void)goToUser:(NSInteger)index {
