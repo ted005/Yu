@@ -10,7 +10,10 @@
 
 @interface PostModel : NSObject
 
+@property(nonatomic, assign) int postId;
+
 @property(nonatomic, copy) NSString *postTitle;
+@property(nonatomic, copy) NSString *postContent;
 @property(nonatomic, copy) NSString *jumpUrl;
 
 @property(nonatomic, copy) NSString *userName;
@@ -19,5 +22,7 @@
 //所属板块
 @property(nonatomic, copy) NSString *belongToNodeTitle;
 @property(nonatomic, copy) NSString *belongToNodeUrl;
+
+@property(nonatomic, assign) NSInteger replies;
 
 @end

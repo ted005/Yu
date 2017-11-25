@@ -9,6 +9,8 @@
 #import "SecondViewController.h"
 #import "HWTableViewCell.h"
 #import "HWDefine.h"
+#import "HWUtil.h"
+#import "UserViewController.h"
 #import <SafariServices/SafariServices.h>
 
 #import <AFNetworking/AFNetworking.h>
@@ -26,32 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 44, HW_SCREEN_WIDTH, 40)];
-    titleView.text = @"最新主题";
-    titleView.textAlignment = NSTextAlignmentCenter;
-    titleView.font = [UIFont boldSystemFontOfSize:20];
-    titleView.textColor = [UIColor blackColor];
-    [self.view addSubview:titleView];
+    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(refresh)];
+    [self.navigationItem setRightBarButtonItem:refresh];
     
-    //渐变
-    UIView *_gradientView = [[UIView alloc] initWithFrame:CGRectMake(0, titleView.frame.origin.y + titleView.frame.size.height, HW_SCREEN_WIDTH, HWR(3))];
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.colors = @[(__bridge id)[UIColor clearColor].CGColor, (__bridge id)[[UIColor blackColor] colorWithAlphaComponent:0.1].CGColor];
-    gradientLayer.startPoint = CGPointMake(0.5, 0);
-    gradientLayer.endPoint = CGPointMake(0.5, 1);
-    gradientLayer.frame = _gradientView.bounds;
-    [_gradientView.layer addSublayer:gradientLayer];
-    [self.view addSubview:_gradientView];
-    
-    UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    refreshBtn.frame = CGRectMake(HW_SCREEN_WIDTH - HWR(35), 0, HWR(20), HWR(20));
-    refreshBtn.center = CGPointMake(refreshBtn.center.x, titleView.center.y);
-    [refreshBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
-    [refreshBtn addTarget:self action:@selector(refresh) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:refreshBtn];
-    
-    CGFloat tableHeight = self.view.frame.size.height - 44 - titleView.frame.size.height - 50;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, titleView.frame.origin.y + titleView.frame.size.height + _gradientView.frame.size.height, HW_SCREEN_WIDTH, tableHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -118,22 +98,7 @@
 }
 
 - (void)pushDataToDataSourceArr:(NSArray *)responseObject {
-    for (NSDictionary *dic in responseObject) {
-        PostModel *model = [[PostModel alloc] init];
-        model.postTitle = dic[@"title"];
-        model.jumpUrl = dic[@"url"];
-        
-        NSDictionary *memberDic = dic[@"member"];
-        NSDictionary *nodeDic = dic[@"node"];
-        
-        model.userName = memberDic[@"username"];
-        model.userAvatar = [NSString stringWithFormat:@"https:%@", memberDic[@"avatar_large"]];
-        
-        model.belongToNodeTitle = nodeDic[@"title"];
-        model.belongToNodeUrl = nodeDic[@"url"];
-        
-        [_dataSourceArr addObject:model];
-    }
+    [HWUtil pushDataToDataSourceArr:responseObject dataSource:_dataSourceArr];
 }
 
 - (void)refresh {
@@ -145,9 +110,10 @@
 
 - (void)goToUser:(NSInteger)index {
     PostModel *model = _dataSourceArr[index];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.v2ex.com/member/%@", model.userName]];
-    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:url];
-    [self showViewController:safariVC sender:nil];
+    UserViewController *userVC = [[UserViewController alloc] init];
+    userVC.userAvatar = model.userAvatar;
+    userVC.userName = model.userName;
+    [self.navigationController pushViewController:userVC animated:YES];
 }
 
 - (void)goToNode:(NSInteger)index {

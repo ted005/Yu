@@ -57,7 +57,7 @@ const static NSInteger NODE_AVATAR_TAG = 2000;
     
     _userName = [[UILabel alloc] initWithFrame:CGRectMake(2 *leftMargin + HWR(60), leftMargin, HW_SCREEN_WIDTH - HWR(80) - HWR(10), HWR(15))];
     _userName.textAlignment = NSTextAlignmentCenter;
-    _userName.backgroundColor = CTColorHex(0xefefef);
+//    _userName.backgroundColor = CTColorHex(0xefefef);
     _userName.font = [UIFont systemFontOfSize:17];
     _userName.layer.cornerRadius = HWR(8);
     [self.contentView addSubview:_userName];
@@ -84,9 +84,9 @@ const static NSInteger NODE_AVATAR_TAG = 2000;
 
 - (void)goToUser:(UITapGestureRecognizer *)gesture {
     NSInteger index = gesture.view.tag - NODE_AVATAR_TAG;
-    //    if (self.delegate && [self.delegate respondsToSelector:@selector(goToNode:)]) {
-    [self.delegate goToUser:index];
-    //    }
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(goToUser:)]) {
+        [self.delegate goToUser:index];
+//    }
 }
 
 - (void)goToNode:(UIButton *)button {
