@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostModel.h"
+#import "PostDetailReplyCell.h"
 
-@interface PostDetailViewControllerTableViewController : UITableViewController
+@interface PostDetailViewControllerTableViewController : UITableViewController<PostDetailReplyCellDelegate>
+
+@property(nonatomic, strong) PostModel *model;
 
 @end

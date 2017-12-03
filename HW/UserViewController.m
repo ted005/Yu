@@ -12,6 +12,8 @@
 #import "UserCell.h"
 #import "UserPostCell.h"
 #import "HWTableViewCell.h"
+#import "PostDetailViewControllerTableViewController.h"
+
 #import <AFNetworking/AFNetworking.h>
 
 @interface UserViewController ()
@@ -93,6 +95,16 @@
     }
     [cell setData:[_dataSourceArr objectAtIndex:indexPath.row - 1]];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return;
+    }
+    PostModel *model = _dataSourceArr[indexPath.row - 1];
+    PostDetailViewControllerTableViewController *postVC = [[PostDetailViewControllerTableViewController alloc] init];
+    postVC.model = model;
+    [self.navigationController pushViewController:postVC animated:YES];
 }
 
 @end

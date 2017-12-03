@@ -11,6 +11,7 @@
 #import "HWDefine.h"
 #import "HWUtil.h"
 #import "UserViewController.h"
+#import "PostDetailViewControllerTableViewController.h"
 #import <SafariServices/SafariServices.h>
 
 #import <AFNetworking/AFNetworking.h>
@@ -117,17 +118,19 @@
 }
 
 - (void)goToNode:(NSInteger)index {
+    return;
     PostModel *model = _dataSourceArr[index];
     NSURL *url = [NSURL URLWithString:model.belongToNodeUrl];
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:url];
-    [self showViewController:safariVC sender:nil];
+    safariVC.modalPresentationStyle = UIModalPresentationPopover;
+    [self.navigationController.parentViewController showViewController:safariVC sender:nil];
 }
 
 - (void)goToPost:(NSInteger)index {
     PostModel *model = _dataSourceArr[index];
-    NSURL *url = [NSURL URLWithString:model.jumpUrl];
-    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:url];
-    [self showViewController:safariVC sender:nil];
+    PostDetailViewControllerTableViewController *postVC = [[PostDetailViewControllerTableViewController alloc] init];
+    postVC.model = model;
+    [self.navigationController pushViewController:postVC animated:YES];
 }
 
 

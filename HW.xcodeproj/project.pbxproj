@@ -22,6 +22,9 @@
 		D0BB96F81FC56CC800948C9C /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB96F61FC56CA100948C9C /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0BB96FA1FC5914F00948C9C /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB96F91FC5913A00948C9C /* MBProgressHUD.framework */; };
 		D0BB96FB1FC5914F00948C9C /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0BB96F91FC5913A00948C9C /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F8253D861FCAE2460077E8A5 /* PostReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8253D851FCAE2460077E8A5 /* PostReplyModel.m */; };
+		F8253D891FCAE3560077E8A5 /* PostDetailUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8253D881FCAE3560077E8A5 /* PostDetailUserCell.m */; };
+		F8253D8C1FCAE9810077E8A5 /* PostDetailReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8253D8B1FCAE9810077E8A5 /* PostDetailReplyCell.m */; };
 		F852AE391FC92BFB007E53E9 /* PostDetailViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852AE381FC92BFB007E53E9 /* PostDetailViewControllerTableViewController.m */; };
 		F852AE3C1FC93075007E53E9 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852AE3B1FC93075007E53E9 /* UserViewController.m */; };
 		F852AE401FC932BB007E53E9 /* HWUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F852AE3F1FC932BB007E53E9 /* HWUtil.m */; };
@@ -66,6 +69,12 @@
 		D0BB96F11FC53CAF00948C9C /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
 		D0BB96F61FC56CA100948C9C /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		D0BB96F91FC5913A00948C9C /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MBProgressHUD.framework; sourceTree = "<group>"; };
+		F8253D841FCAE2460077E8A5 /* PostReplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostReplyModel.h; sourceTree = "<group>"; };
+		F8253D851FCAE2460077E8A5 /* PostReplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostReplyModel.m; sourceTree = "<group>"; };
+		F8253D871FCAE3560077E8A5 /* PostDetailUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailUserCell.h; sourceTree = "<group>"; };
+		F8253D881FCAE3560077E8A5 /* PostDetailUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailUserCell.m; sourceTree = "<group>"; };
+		F8253D8A1FCAE9810077E8A5 /* PostDetailReplyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailReplyCell.h; sourceTree = "<group>"; };
+		F8253D8B1FCAE9810077E8A5 /* PostDetailReplyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailReplyCell.m; sourceTree = "<group>"; };
 		F852AE371FC92BFB007E53E9 /* PostDetailViewControllerTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailViewControllerTableViewController.h; sourceTree = "<group>"; };
 		F852AE381FC92BFB007E53E9 /* PostDetailViewControllerTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewControllerTableViewController.m; sourceTree = "<group>"; };
 		F852AE3A1FC93075007E53E9 /* UserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
@@ -145,6 +154,10 @@
 				F852AE421FC93532007E53E9 /* UserCell.m */,
 				F852AE441FC93A1D007E53E9 /* UserPostCell.h */,
 				F852AE451FC93A1D007E53E9 /* UserPostCell.m */,
+				F8253D871FCAE3560077E8A5 /* PostDetailUserCell.h */,
+				F8253D881FCAE3560077E8A5 /* PostDetailUserCell.m */,
+				F8253D8A1FCAE9810077E8A5 /* PostDetailReplyCell.h */,
+				F8253D8B1FCAE9810077E8A5 /* PostDetailReplyCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -154,6 +167,8 @@
 			children = (
 				D0BB96DA1FC5191700948C9C /* PostModel.h */,
 				D0BB96DB1FC5191700948C9C /* PostModel.m */,
+				F8253D841FCAE2460077E8A5 /* PostReplyModel.h */,
+				F8253D851FCAE2460077E8A5 /* PostReplyModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -282,11 +297,14 @@
 				F852AE401FC932BB007E53E9 /* HWUtil.m in Sources */,
 				F852AE391FC92BFB007E53E9 /* PostDetailViewControllerTableViewController.m in Sources */,
 				D0BB96BC1FC5142200948C9C /* AppDelegate.m in Sources */,
+				F8253D861FCAE2460077E8A5 /* PostReplyModel.m in Sources */,
 				D0BB96CD1FC5142200948C9C /* main.m in Sources */,
 				F852AE3C1FC93075007E53E9 /* UserViewController.m in Sources */,
 				D0BB96BF1FC5142200948C9C /* FirstViewController.m in Sources */,
 				F852AE431FC93532007E53E9 /* UserCell.m in Sources */,
+				F8253D8C1FCAE9810077E8A5 /* PostDetailReplyCell.m in Sources */,
 				D0BB96DC1FC5191700948C9C /* PostModel.m in Sources */,
+				F8253D891FCAE3560077E8A5 /* PostDetailUserCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
